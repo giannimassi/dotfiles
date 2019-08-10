@@ -1,0 +1,4 @@
+# This is Git's per-user configuration file.
+[user]
+	name = Gianni Massi
+	email = gianni.massi@develer.com
