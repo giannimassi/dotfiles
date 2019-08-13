@@ -102,4 +102,4 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
   alias toclip='pbcopy'
 fi
 
-alias editme='atom $HOME/dotfiles'
+alias editme='code $HOME/dotfiles/'
