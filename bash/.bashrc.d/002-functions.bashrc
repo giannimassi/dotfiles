@@ -41,6 +41,11 @@ function dec2hex {
     echo "obase=16; $@" | bc
 }
 
+# cd to go package in $GOPATH
+function cdgo {
+  cd $GOPATH/src/$1
+}
+
 # Check if os is linux
 islinux() {
   if [[ "$OSTYPE" == "linux-gnu" ]]; then
