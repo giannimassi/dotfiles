@@ -64,6 +64,19 @@ ismac() {
   fi
 }
 
+# New terminal window
+function nw () {
+  input="$@"
+  cmds="cd `pwd` && $input"
+  echo ${yellow} Executing \"$input\" in new terminal window ${reset}
+osascript  <<EOF
+tell app "Terminal"
+  do script "$cmds"
+end tell
+EOF
+echo ${green}Done.${reset}
+}
+
 ######################################################################################
 ## NETWORKING
 
