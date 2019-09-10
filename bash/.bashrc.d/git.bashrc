@@ -74,6 +74,12 @@ alias gf='echo "${green}Fetching...${reset}" && git fetch'
 
 alias grh='echo "${red}Resetting with --hard${reset}" && git reset --hard'
 ismac &&  __git_complete ckb _git_reset
+alias grh1='grh HEAD^'
+ismac &&  __git_complete ckb _git_reset
+alias grh2='grh HEAD^^'
+ismac &&  __git_complete ckb _git_reset
+alias grh3='grh HEAD^^^'
+ismac &&  __git_complete ckb _git_reset
 alias gr='echo "${green}Resetting${reset}" && git reset'
 ismac &&  __git_complete ckb _git_reset
 
