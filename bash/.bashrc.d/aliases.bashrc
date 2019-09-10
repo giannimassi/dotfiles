@@ -109,3 +109,6 @@ alias cata='chroma'
 # require: go get -u github.com/inancgumus/godocc
 alias godoc="godocc"
 
+
+# Common mispellings
+alias pign="ping"
