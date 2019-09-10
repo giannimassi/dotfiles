@@ -1,1 +1,7 @@
 local/.localbashrc.d/*
+.DS_Store
+build/
+dist/
+node_modules/
+.idea
+.vscode
