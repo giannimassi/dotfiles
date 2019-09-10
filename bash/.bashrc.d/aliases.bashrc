@@ -103,3 +103,5 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 fi
 
 alias editme='code $HOME/dotfiles/'
+alias cata='chroma'
+
