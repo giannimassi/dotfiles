@@ -48,14 +48,14 @@ if [ -d "$HOME/.local/bin" ]; then
     export PATH="$HOME/.local/bin:$PATH"
 fi
 
-# If set and if it exists, add LOCAL GO /bin directory to the path
-if [ -n "$LOCALGOBIN" ]; then
-    if [ -d "$LOCALGOBIN" ]; then
-        export PATH="$LOCALGOBIN:$PATH"
+# If set and if it exists, add GOBIN directory to the path
+if [ -n "$GOBIN" ]; then
+    if [ -d "$GOBIN" ]; then
+        export PATH="$GOBIN:$PATH"
     fi
 fi
 
-# If set and if it exists, use GOPATH and add $GOPATH/bin to the path
+# If set and if it exists, use GOPATH to the path
 if [ -n "$GOPATH" ]; then
     if [ -d "$GOPATH" ]; then
         export PATH="$GOPATH:$PATH"
