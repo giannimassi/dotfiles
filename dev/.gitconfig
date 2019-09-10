@@ -22,9 +22,6 @@
 [push]
   default = simple
 
-[rebase]
-	autosquash = true
-
 [core]
     excludesfile = /Users/gmassi/.gitignore
 
