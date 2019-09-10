@@ -105,3 +105,7 @@ fi
 alias editme='code $HOME/dotfiles/'
 alias cata='chroma'
 
+# Go
+# require: go get -u github.com/inancgumus/godocc
+alias godoc="godocc"
+
