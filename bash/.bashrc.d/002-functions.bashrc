@@ -95,3 +95,35 @@ listening() {
         echo "Usage: listening [pattern]"
     fi
 }
+
+## CODING
+# gochecks runs go imports, goftm, go lint and go vet on the current projec
+gochecks() {
+  echo "Running ${green}gofmt${reset} on ${yellow}changed files${reset}..."
+  echo $(git diff --cached --name-only --diff-filter=ACM | grep .go) | xargs gofmt -w -l  || return 1
+  echo "Running ${green}goimports${reset} on ${yellow}changed files${reset}..."
+	echo $(git diff --cached --name-only --diff-filter=ACM | grep .go) | xargs goimports -w -l -local github.com/develersrl/unitec-sw  || return 1
+  echo "Running ${green}golint${reset} on ${yellow}whole project${reset}..."
+  golint -set_exit_status `go list ./...`  || return 1
+  echo "Running ${green}go vet${reset} on ${yellow}whole project${reset}..."
+  go vet ./...  || return 1
+}
+
+# Usage: mv oldfilename
+# If you call mv without the second parameter it will prompt you to edit the filename on command line.
+# Original mv is called when it's called with more than one argument.
+# It's useful when you want to change just a few letters in a long name.
+
+function mv() {
+  if [ "$#" -ne 1 ]; then
+    command mv "$@"
+    return
+  fi
+  if [ ! -f "$1" ]; then
+    command file "$@"
+    return
+  fi
+
+  read -ei "$1" newfilename
+  mv -v "$1" "$newfilename"
+}

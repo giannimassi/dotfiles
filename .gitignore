@@ -1,4 +1,3 @@
-local/.localbashrc.d/*
 .DS_Store
 build/
 dist/
