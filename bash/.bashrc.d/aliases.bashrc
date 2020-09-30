@@ -30,10 +30,10 @@ alias lc='ls -C'
 alias lo="ls -l | sed -e 's/--x/1/g' -e 's/-w-/2/g' -e 's/-wx/3/g' -e 's/r--/4/g' -e 's/r-x/5/g' -e 's/rw-/6/g' -e 's/rwx/7/g' -e 's/---/0/g'"
 alias cls='clear'
 
-# less alias
-alias less='less -FXR'   # -R = --RAW-CONTROL-CHARS'
-                         # -F or --quit-if-one-screen
-                         # -X or --no-init
+# # less alias
+# alias less='less -FXR'   # -R = --RAW-CONTROL-CHARS'
+#                          # -F or --quit-if-one-screen
+#                          # -X or --no-init
 
 # add lesc alias (pygmentize + less) if pygmentize is installed
 if safewhich pygmentize
@@ -102,13 +102,14 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
   alias toclip='pbcopy'
 fi
 
+alias pwdclip="pwd | toclip"
+
 alias editme='code $HOME/dotfiles/'
 alias cata='chroma'
+alias make="make -j$(getconf _NPROCESSORS_ONLN)"
 
-# Go
-# require: go get -u github.com/inancgumus/godocc
-alias godoc="godocc"
-
+## requires hub
+alias open-ci='open `hub ci-status --format="%U"`'
 
 # Common mispellings
 alias pign="ping"

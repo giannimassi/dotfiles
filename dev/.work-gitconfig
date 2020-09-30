@@ -2,3 +2,6 @@
 [user]
 	name = Gianni Massi
 	email = gianni.massi@develer.com
+
+[core]
+    excludesfile = /Users/gmassi/.gitignore

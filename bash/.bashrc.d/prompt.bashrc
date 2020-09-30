@@ -13,9 +13,8 @@ function my_prompt
     export GBT_CAR_DIR_BG='yellow'
     # Set the foreground color of the `Dir` car to black
     export GBT_CAR_DIR_FG='black'
-
-    # # Add the Time car into the train
-    export GBT_CARS='Dir,Git,Sign'
+    # export GBT_CARS='Status,Git,Dir,Sign'
+    export GBT_CARS='Status,Dir,Sign'   
 
     PS1='$(gbt $?)'
 }
