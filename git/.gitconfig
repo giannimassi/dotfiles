@@ -1,0 +1,72 @@
+# This is Git's per-user configuration file.
+[user]
+	name = Gianni Massi
+	email = me@giannimassi.it
+	signingkey = 0FDE730F483D97E3
+
+[includeIf "gitdir:~/develop/develer/**"]
+    	path = ~/.work-gitconfig
+
+[pull]
+  ff = only
+
+[core]
+    excludesfile = /Users/gmassi/dotfiles/.gitignore
+	eol = lf
+	autocrlf = input
+
+[status]
+	relativePaths = true
+
+[alias]
+	amend = commit --amend
+    fixup = "!f() { TARGET=$(git rev-parse "$1"); git commit --fixup=$TARGET ${@:2} && EDITOR=true git rebase -i --autostash --autosquash $TARGET^; }; f"
+	code-changes = "!git log --format=format: --name-only | egrep -v '^$' | sort | uniq -c | sort -rgz"
+	cc = "!git code-changes"
+
+[format]
+  pretty = %Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset
+
+[color]
+	branch = auto
+	diff = auto
+	status = auto
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+[color "diff"]
+	meta = yellow bold
+	commit      = green
+	frag = magenta bold
+	old = red bold
+	new = green bold
+	whitespace  = "red reverse"
+[color "status"]
+  header    = white dim
+  branch    = yellow bold
+  added     = green bold
+  changed   = red bold
+  untracked = cyan
+[gui]
+  fontui = -family \"Consolas\" -size 12 -weight normal -slant roman -underline 0 -overstrike 0
+  fontdiff = -family \"Consolas\" -size 12 -weight normal -slant roman -underline 0 -overstrike 0
+	spellingdictionary = en
+
+[cola]
+    spellcheck = false
+	safemode = false
+	fontdiff = Hack Nerd Font,11,-1,5,50,0,0,0,0,0
+
+[filter "lfs"]
+  required = true
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  clean = git-lfs clean -- %f
+
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+
+[rebase]
+	autosquash = true
+	interactive = true
