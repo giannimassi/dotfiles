@@ -93,6 +93,7 @@ alias pign="ping"
 
 ## Quick Access
 alias editme='code $HOME/dotfiles/'
+alias reloadme='source $HOME/.bashrc'
 alias q="exit"
 
 ###################################################################################################
