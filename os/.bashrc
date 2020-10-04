@@ -42,7 +42,7 @@ listening() {
 # gochecks runs go imports, goftm, go lint and go vet on the current projec
 gochecks() {
     echo "Running ${green}gofmt${reset} on ${yellow}changed files${reset}..."
-    echo $(git diff --cached --name-only --diff-filter=ACM | grep .go) | xargs gofmt -w -l || return 1
+    echo $(git diff --cached --name-only --diff-filter=ACM | grep .go) | xargs go fmt || return 1
     echo "Running ${green}goimports${reset} on ${yellow}changed files${reset}..."
     echo $(git diff --cached --name-only --diff-filter=ACM | grep .go) | xargs goimports -w -l -local github.com/develersrl/unitec-sw || return 1
     echo "Running ${green}golint${reset} on ${yellow}whole project${reset}..."
