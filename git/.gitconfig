@@ -73,3 +73,6 @@
 [rebase]
 	autosquash = true
 	interactive = true
+
+[core]
+	editor = vim
