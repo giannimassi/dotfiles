@@ -51,6 +51,20 @@ gochecks() {
     go vet ./... || return 1
 }
 
+mtime() {
+    rm -f /tmp/mtime.$$
+
+    count=$1
+    shift
+
+    for x in {1..$count}; do
+        /usr/bin/time -f "real %e user %U sys %S" -a -o /tmp/mtime.$$ $@
+        tail -1 /tmp/mtime.$$
+    done
+
+    awk '{ et += $2; ut += $4; st += $6; count++ } END {  printf "Average over '"$count"' times:\nreal %.3f user %.3f sys %.3f\n", et/count, ut/count, st/count }' /tmp/mtime.$$
+}
+
 ###################################################################################################
 # Aliases
 ###################################################################################################
