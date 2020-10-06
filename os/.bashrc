@@ -219,3 +219,5 @@ fi
 # Manage go version with gvm
 [[ -s "/home/gianni/.gvm/scripts/gvm" ]] && source "/home/gianni/.gvm/scripts/gvm"
 gvm use go1.15.2 >/dev/null
+
+[[ -s "$HOME/.private" ]] && source "$HOME/.private"

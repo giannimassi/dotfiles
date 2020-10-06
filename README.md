@@ -7,6 +7,7 @@ This is a collection of my dot files, here's a list of features:
 - uses gbt for command line prompt- Fonts included: Agave Font and Nerd Font
 - lots of useful aliases and functions
 - unconventional super-quick access git aliases (is is a bad idea to have your git status one key stroke away?)
+- private package implemented as a private submodule repository 
 
 ## Requirements
 
@@ -26,7 +27,7 @@ Clone repo in home directory and use `stow` to install packages:
 ```bash
 cd
 git clone git@github.com:giannimassi/dotfiles.git
-stow os git term
+stow os git term private
 ```
 
 -------------
