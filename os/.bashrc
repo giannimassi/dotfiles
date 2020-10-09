@@ -109,6 +109,7 @@ alias pign="ping"
 alias editme='code $HOME/dotfiles/'
 alias reloadme='source $HOME/.bashrc'
 alias q="exit"
+alias r="./scripts/run.sh"
 
 ###################################################################################################
 # Git stuff
