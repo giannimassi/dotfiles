@@ -59,7 +59,8 @@
 [cola]
     spellcheck = false
 	safemode = false
-	fontdiff = Hack Nerd Font,11,-1,5,50,0,0,0,0,0
+	fontdiff = agave Nerd Font Mono,9,-1,5,50,0,0,0,0,0
+	theme = flat-dark-grey
 
 [filter "lfs"]
   required = true
