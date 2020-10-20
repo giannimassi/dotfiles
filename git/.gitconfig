@@ -2,7 +2,7 @@
 [user]
 	name = Gianni Massi
 	email = me@giannimassi.it
-	signingkey = 0FDE730F483D97E3
+	signingkey = D24976BE3CE934D5
 
 [includeIf "gitdir:~/develop/develer/**"]
     	path = ~/.work-gitconfig
