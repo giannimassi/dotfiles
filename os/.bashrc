@@ -236,3 +236,6 @@ gvm use go1.15.2 >/dev/null
 export GOPATH=/home/gianni/dev/go
 export GOBIN=/home/gianni/dev/go/bin
 export PATH="$GOBIN:$PATH"
+
+# Added by serverless binary installer
+export PATH="$HOME/.serverless/bin:$PATH"
