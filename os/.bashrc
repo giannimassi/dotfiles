@@ -129,8 +129,8 @@ alias aa='if [ $(git diff --name-only | uniq | xargs grep -Hn "<<<<<<<" | tee >(
 alias a_nocheck='echo "${red}Adding modified files...${reset}" && git add -uv'
 
 # GIT COMMIT
-alias c='echo "${red}Committing...${reset}" && git commit'
-alias ano='echo "${red}Amending commit with no message edit...${reset}" && git commit --amend --no-edit'
+alias c='echo "${red}Committing...${reset}" && git commit -S'
+alias ano='echo "${red}Amending commit with no message edit...${reset}" && git commit -S --amend --no-edit'
 
 # GIT BRANCH
 alias b='git branch'
