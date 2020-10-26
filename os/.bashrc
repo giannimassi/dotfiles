@@ -237,5 +237,9 @@ export GOPATH=/home/gianni/dev/go
 export GOBIN=/home/gianni/dev/go/bin
 export PATH="$GOBIN:$PATH"
 
+# Cargo
+export CARGO_HOME=/home/gianni/.cargo
+export PATH="$CARGO_HOME/bin:$PATH"
+
 # Added by serverless binary installer
 export PATH="$HOME/.serverless/bin:$PATH"
