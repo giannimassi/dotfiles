@@ -67,6 +67,9 @@ alias tmat='tmux attach-session -t'
 alias tmcs='tmux choose-session'
 alias tmls='tmux list-sessions'
 alias tmns='tmux new-session -s'
+alias fun='tmux new-session -A -s fun'
+alias work='tmux new-session -A -s work'
+alias dotfiles='tmux new-session -A -s dotfiles'
 
 # cd aliases
 alias cd='cd -P'
