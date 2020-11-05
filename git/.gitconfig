@@ -26,6 +26,7 @@
 	cc = "!git code-changes"
 	pause = "update-index --assume-unchanged"
 	resume = "update-index --no-assume-unchanged"
+	cb = "checkout-branch"
 
 [format]
   pretty = %Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset
