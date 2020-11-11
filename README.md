@@ -33,3 +33,11 @@ stow os git term private
 -------------
 Note 1: on linux reload fonts with `fc-cache -v -f` after installation.
 Note 2: some packages might return an error if a file/dir with the same name are present in the home directory. Remove them or merge them to the files in the dotfiles repo.
+
+
+## ZSH update
+Install plugin manager
+
+```sh
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
