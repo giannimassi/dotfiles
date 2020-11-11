@@ -101,8 +101,8 @@ fi
 alias pign="ping"
 
 ## Quick Access
-alias editme='code $HOME/dotfiles/'
-alias reloadme='source $HOME/.bashrc'
+alias editme='code ~/dotfiles/'
+alias reloadme='source ~/.bashrc'
 alias q="exit"
 alias r="./scripts/run.sh"
 
@@ -227,22 +227,22 @@ if ! shopt -oq posix; then
 fi
 
 # Manage go version with gvm
-[[ -s "/home/gianni/.gvm/scripts/gvm" ]] && source "/home/gianni/.gvm/scripts/gvm"
+[[ -s "~/.gvm/scripts/gvm" ]] && source "~/.gvm/scripts/gvm"
 gvm use go1.15.3 >/dev/null
 
-[[ -s "$HOME/.private" ]] && source "$HOME/.private"
+[[ -s "~/.private" ]] && source "~/.private"
 
 ###################################################################################################
 # Environment Variables
 ###################################################################################################
 
-export GOPATH=/home/gianni/dev/go
-export GOBIN=/home/gianni/dev/go/bin
+export GOPATH=~/dev/go
+export GOBIN=~/dev/go/bin
 export PATH="$GOBIN:$PATH"
 
 # Cargo
-export CARGO_HOME=/home/gianni/.cargo
+export CARGO_HOME=~/.cargo
 export PATH="$CARGO_HOME/bin:$PATH"
 
 # Added by serverless binary installer
-export PATH="$HOME/.serverless/bin:$PATH"
+export PATH="~/.serverless/bin:$PATH"
