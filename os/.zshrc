@@ -42,6 +42,7 @@ plugins=(
     git
     tmux
     alias-finder
+    zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
