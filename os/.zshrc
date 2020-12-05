@@ -46,6 +46,7 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
+source ~/.work
 
 # Run alias-finder automatically every time you input a command
 ZSH_ALIAS_FINDER_AUTOMATIC=true
