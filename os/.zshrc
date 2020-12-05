@@ -46,7 +46,6 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
-source ~/.work
 
 # Run alias-finder automatically every time you input a command
 ZSH_ALIAS_FINDER_AUTOMATIC=true
@@ -128,3 +127,26 @@ alias cd....='cd ../../../'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
+
+###################################################################################################
+# Environment Variables
+###################################################################################################
+
+# set options for less
+export LESS='--quit-if-one-screen --ignore-case --status-column --LONG-PROMPT --RAW-CONTROL-CHARS --HILITE-UNREAD --tabs=4 --no-init --window=-4'
+
+export GOPATH=~/dev/go
+export GOBIN=~/dev/go/bin
+export PATH="$GOBIN:$PATH"
+
+# Cargo
+export CARGO_HOME=~/.cargo
+export PATH="$CARGO_HOME/bin:$PATH"
+
+# direnv hook
+eval "$(direnv hook zsh)"
+
+export EDITOR=vim
+
+source ~/.private
+source ~/.gvm/scripts/gvm
