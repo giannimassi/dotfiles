@@ -85,3 +85,5 @@
 
 [core]
 	editor = vim
+[commit]
+	gpgsign = true
