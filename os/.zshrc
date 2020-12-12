@@ -246,6 +246,8 @@ mkservice() {
 alias fun='tmux new-session -A -s fun'
 alias work='tmux new-session -A -s work'
 alias dotfiles='tmux new-session -A -s dotfiles'
+alias editme="code ~/dotfiles"
+alias reloadme="source ~/.zshrc"
 
 # cd aliases
 alias cd='cd -P'
@@ -257,6 +259,9 @@ alias cd....='cd ../../../'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
+
+# quick and unorthodox, never more useful
+alias q="exit"
 
 ###################################################################################################
 # Environment Variables
