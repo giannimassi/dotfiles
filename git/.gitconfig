@@ -86,3 +86,5 @@
 	gpgsign = true
 [branch "master"]
 	pushRemote = no_push
+[gpg]
+	program = /usr/local/bin/gpg
