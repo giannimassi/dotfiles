@@ -16,7 +16,6 @@ ZSH_THEME="af-magic"
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
 
-
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
@@ -119,14 +118,23 @@ autogit() {
 
 installautogit() {
     dir="${PWD}"
-    name=$(echo "${dir}" | tr / .)
-    mkservice "${name}" "~/.scripts/watch-and-commit.sh | xargs -I{}  ~/.scripts/commit-all.sh {}" "${dir}"
+
+    name="$(echo "${dir}" | tr / .)"
+    mkservice "$name.push" "~/.scripts/watch-and-commit.sh | xargs -I{}  ~/.scripts/commit-all.sh {}" "${dir}"
+
+    # Do not remove second name assignment, it is mutated after mkservice cmd (don't know why)
+    name="$(echo "${dir}" | tr / .)"
+    mkcronservice "$name.pull" "git pull" "${dir}" 60
 }
 
 removeautogit() {
     dir="${PWD}"
+
     name=$(echo "${dir}" | tr / .)
-    rmservice "${name}"
+    rmservice "${name}-push"
+
+    name="$(echo "${dir}" | tr / .)"
+    rmservice "${name}-pull"
 }
 
 rmservice() {
@@ -135,6 +143,56 @@ rmservice() {
     launchctl unload $plistPath
     rm $plistPath
     echo "Service ${name} uninstalled"
+}
+
+mkcronservice() {
+    name=$1
+    cmd=$2
+    workingDir=$3
+    seconds=$4
+
+    plistPath="${HOME}/Library/LaunchAgents/${name}.plist"
+
+    outLog="/tmp/${name}.out.log"
+    errLog="/tmp/${name}.error.log"
+    template="<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+<!DOCTYPE plist PUBLIC -//Apple Computer//DTD PLIST 1.0//EN http://www.apple.com/DTDs/PropertyList-1.0.dtd>
+<plist version=\"1.0\">
+<dict>
+    <key>Label</key>
+    <string>${name}</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>sh</string>
+        <string>-c</string>
+        <string>${cmd}</string>
+    </array>
+    <key>KeepAlive</key>
+    <true/>
+    <key>WorkingDirectory</key>
+    <string>${workingDir}</string>
+    <key>StandardOutPath</key>
+    <string>${outLog}</string>
+    <key>StandardErrorPath</key>
+    <string>${errLog}</string>
+    <key>UserName</key>
+	<string>gianni</string>
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>${PATH}</string>
+    </dict>
+    <key>StartInterval</key>
+    <integer>${seconds}</integer>
+</dict>
+</plist>"
+
+    echo $template >$plistPath
+    launchctl load $plistPath
+
+    echo "Cron Service ${name} installed ($plistPath)"
+    echo "\tStdout Log: ${outLog}"
+    echo "\tStderr Log: ${errLog}"
 }
 
 mkservice() {
@@ -153,25 +211,27 @@ mkservice() {
 <dict>
     <key>Label</key>
     <string>${name}</string>
-
     <key>ProgramArguments</key>
     <array>
-        <string>bash</string>
+        <string>sh</string>
         <string>-c</string>
         <string>${cmd}</string>
     </array>
-
     <key>KeepAlive</key>
     <true/>
-
     <key>WorkingDirectory</key>
     <string>${workingDir}</string>
-
     <key>StandardOutPath</key>
     <string>${outLog}</string>
-
     <key>StandardErrorPath</key>
     <string>${errLog}</string>
+    <key>UserName</key>
+	<string>gianni</string>
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>${PATH}</string>
+    </dict>
 </dict>
 </plist>"
 
