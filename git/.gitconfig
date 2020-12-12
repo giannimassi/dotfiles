@@ -87,3 +87,5 @@
 	editor = vim
 [commit]
 	gpgsign = true
+[branch "master"]
+	pushRemote = no_push
