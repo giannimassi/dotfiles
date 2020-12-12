@@ -113,6 +113,76 @@ gochecks() {
     go vet ./... || return 1
 }
 
+autogit() {
+    ~/.scripts/watch-and-commit.sh | xargs -I{} ~/.scripts/commit-all.sh {}
+}
+
+installautogit() {
+    dir="${PWD}"
+    name=$(echo "${dir}" | tr / .)
+    mkservice "${name}" "~/.scripts/watch-and-commit.sh | xargs -I{}  ~/.scripts/commit-all.sh {}" "${dir}"
+}
+
+removeautogit() {
+    dir="${PWD}"
+    name=$(echo "${dir}" | tr / .)
+    rmservice "${name}"
+}
+
+rmservice() {
+    name=$1
+    plistPath="${HOME}/Library/LaunchAgents/${name}.plist"
+    launchctl unload $plistPath
+    rm $plistPath
+    echo "Service ${name} uninstalled"
+}
+
+mkservice() {
+    name=$1
+    cmd=$2
+    workingDir=$3
+
+    plistPath="${HOME}/Library/LaunchAgents/${name}.plist"
+
+    outLog="/tmp/${name}.out.log"
+    errLog="/tmp/${name}.error.log"
+
+    template="<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+<!DOCTYPE plist PUBLIC -//Apple Computer//DTD PLIST 1.0//EN http://www.apple.com/DTDs/PropertyList-1.0.dtd>
+<plist version=\"1.0\">
+<dict>
+    <key>Label</key>
+    <string>${name}</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>bash</string>
+        <string>-c</string>
+        <string>${cmd}</string>
+    </array>
+
+    <key>KeepAlive</key>
+    <true/>
+
+    <key>WorkingDirectory</key>
+    <string>${workingDir}</string>
+
+    <key>StandardOutPath</key>
+    <string>${outLog}</string>
+
+    <key>StandardErrorPath</key>
+    <string>${errLog}</string>
+</dict>
+</plist>"
+
+    echo $template >$plistPath
+    launchctl load $plistPath
+
+    echo "Service ${name} installed ($plistPath)"
+    echo "\tStdout Log: ${outLog}"
+    echo "\tStderr Log: ${errLog}"
+}
+
 alias fun='tmux new-session -A -s fun'
 alias work='tmux new-session -A -s work'
 alias dotfiles='tmux new-session -A -s dotfiles'
