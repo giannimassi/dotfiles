@@ -7,9 +7,6 @@
 [includeIf "gitdir:~/develop/develer/**"]
     	path = ~/.work-gitconfig
 
-[pull]
-  ff = only
-
 [core]
     excludesfile = /Users/gmassi/dotfiles/.gitignore
 	eol = lf
