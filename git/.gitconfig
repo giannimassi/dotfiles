@@ -8,7 +8,7 @@
     	path = ~/.work-gitconfig
 
 [core]
-    excludesfile = /Users/gmassi/dotfiles/.gitignore
+	excludesfile = /Users/gianni/.gitignore_global
 	eol = lf
 	autocrlf = input
 	editor = vim
@@ -69,7 +69,7 @@
 
 [filter "lfs"]
   required = true
-  smudge = git-lfs smudge -- %f
+	smudge = git-lfs smudge -- %f
   process = git-lfs filter-process
   clean = git-lfs clean -- %f
 
@@ -88,3 +88,13 @@
 	pushRemote = no_push
 [gpg]
 	program = /usr/local/bin/gpg
+[pull]
+	rebase = true
+[init]
+	defaultBranch = master
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true

@@ -112,6 +112,8 @@ gochecks() {
     go vet ./... || return 1
 }
 
+die() { echo "$*" 1>&2 ; exit 1; }
+
 autogit() {
     ~/.scripts/watch-and-commit.sh | xargs -I{} ~/.scripts/commit-all.sh {}
 }
@@ -262,6 +264,8 @@ alias ....='cd ../../..'
 
 # quick and unorthodox, never more useful
 alias q="exit"
+alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
+alias r="./scripts/run.sh"
 
 ###################################################################################################
 # Environment Variables
@@ -285,3 +289,26 @@ export EDITOR=vim
 
 source ~/.private
 source ~/.gvm/scripts/gvm
+gvm use go1.18
+
+## Python
+if command -v pyenv 1>/dev/null 2>&1; then
+    eval "$(pyenv init --path)"
+    eval "$(pyenv virtualenv-init -)"
+    pyenv global 3.8.7
+fi
+
+if [ -n "$PYTHONPATH" ]; then
+    export PYTHONPATH='/usr/local/Cellar/pdm/1.12.6/libexec/lib/python3.10/site-packages/pdm/pep582':$PYTHONPATH
+else
+    export PYTHONPATH='/usr/local/Cellar/pdm/1.12.6/libexec/lib/python3.10/site-packages/pdm/pep582'
+fi
+
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/gianni/.sdkman"
+[[ -s "/Users/gianni/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/gianni/.sdkman/bin/sdkman-init.sh"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"                                       # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
