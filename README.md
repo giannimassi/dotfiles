@@ -21,6 +21,8 @@ Install the following packages:
 - gbt: `go get github.com/jtyr/gbt/cmd/gbt`
 - gvm `bash < <(curl -s -S -L <https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer>)`
 - direnv: `brew install direnv`
+- rust: `brew install rust``
+- git-absorb: `cargo install git-absorb`
 
 ## Usage
 
