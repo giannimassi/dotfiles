@@ -1,3 +1,15 @@
 [submodule "private"]
 	path = private
 	url = git@github.com:giannimassi/private.git
+[submodule "term/.tmux/plugins/tmux-continuum"]
+	path = term/.tmux/plugins/tmux-continuum
+	url = git@github.com:tmux-plugins/tmux-continuum.git
+[submodule "term/.tmux/plugins/tmux-resurrect"]
+	path = term/.tmux/plugins/tmux-resurrect
+	url = git@github.com:tmux-plugins/tmux-resurrect.git
+[submodule "term/.tmux/plugins/tpm"]
+	path = term/.tmux/plugins/tpm
+	url = git@github.com:tmux-plugins/tpm.git
+[submodule "term/.tmux/plugins/zsh-autosuggestions"]
+	path = term/.tmux/plugins/zsh-autosuggestions
+	url = git@github.com:zsh-users/zsh-autosuggestions.git

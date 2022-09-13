@@ -19,6 +19,8 @@ Install the following packages:
 - xclip: `sudo apt install xclip` (macos alternative is called `pbcopy`)
 - fzv: `sudo apt install fzf` / `brew install fzf`
 - gbt: `go get github.com/jtyr/gbt/cmd/gbt`
+- gvm `bash < <(curl -s -S -L <https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer>)`
+- direnv: `brew install direnv`
 
 ## Usage
 
