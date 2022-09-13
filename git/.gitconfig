@@ -2,7 +2,7 @@
 [user]
 	name = Gianni Massi
 	email = me@giannimassi.it
-	signingkey = D24976BE3CE934D5
+	signingkey = EAEE312E
 
 [includeIf "gitdir:~/develop/develer/**"]
     	path = ~/.work-gitconfig
@@ -87,3 +87,5 @@
 	editor = vim
 [commit]
 	gpgsign = true
+[gpg]
+	program = /usr/local/bin/gpg
