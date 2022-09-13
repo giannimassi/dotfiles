@@ -128,6 +128,15 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 
+# Common mispellings
+alias pign="ping"
+
+## Quick Access
+alias editme='code ~/dotfiles/'
+alias reloadme='source ~/.bashrc'
+alias q="exit"
+alias r="./scripts/run.sh"
+
 ###################################################################################################
 # Environment Variables
 ###################################################################################################
