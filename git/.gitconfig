@@ -1,19 +1,22 @@
 # This is Git's per-user configuration file.
 [user]
 	name = Gianni Massi
-	email = me@giannimassi.it
-	signingkey = EAEE312E
+	email = tidymince@gmail.com
+	# signingkey = EAEE312E
 
-[includeIf "gitdir:~/develop/develer/**"]
-    	path = ~/.work-gitconfig
+[includeIf "gitdir:~/dev/magicinternet/**"]
+    	path = ~/dev/magicinternet/.magicinternet-gitconfig
 
+[includeIf "gitdir:~/dev/4securitas/**"]
+    	path = ~/dev/4securitas/.4securitas-gitconfig
+	
 [pull]
   ff = only
 
 [core]
     excludesfile = /Users/gmassi/dotfiles/.gitignore
 	eol = lf
-	autocrlf = input
+	# autocrlf = input
 	editor = vim
 
 [status]
@@ -69,6 +72,7 @@
 	safemode = false
 	fontdiff = agave Nerd Font Mono,9,-1,5,50,0,0,0,0,0
 	theme = flat-dark-grey
+	statusshowtotals = true
 
 [filter "lfs"]
   required = true
@@ -76,8 +80,10 @@
   process = git-lfs filter-process
   clean = git-lfs clean -- %f
 
-[url "git@github.com:"]
-	insteadOf = https://github.com/
+# [url "git@github.com:"]
+# 	insteadOf = https://github.com/
+# [url "ssh://git@github.com/"]
+# 	insteadOf = https://github.com/
 
 [rebase]
 	autosquash = true
@@ -86,6 +92,13 @@
 [core]
 	editor = vim
 [commit]
-	gpgsign = true
+	gpgsign = false
 [gpg]
 	program = /usr/local/bin/gpg
+[credential]
+	helper = 
+	helper = /usr/local/share/gcm-core/git-credential-manager
+[credential "https://dev.azure.com"]
+	useHttpPath = true
+[http]
+	cookiefile = /Users/giannimassi/.gitcookies

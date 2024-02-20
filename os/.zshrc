@@ -133,9 +133,13 @@ alias pign="ping"
 
 ## Quick Access
 alias editme='code ~/dotfiles/'
-alias reloadme='source ~/.bashrc'
+alias reloadme='source ~/.zshrc'
 alias q="exit"
 alias r="./scripts/run.sh"
+
+## Dev on remote machine
+alias run_rsync='rsync -avzP --exclude "*/bin" $PWD dev1:/tmp/'
+alias frsync='run_rsync; fswatch -o . | while read f; do run_rsync; done'
 
 ###################################################################################################
 # Environment Variables
@@ -144,8 +148,7 @@ alias r="./scripts/run.sh"
 # set options for less
 export LESS='--quit-if-one-screen --ignore-case --status-column --LONG-PROMPT --RAW-CONTROL-CHARS --HILITE-UNREAD --tabs=4 --no-init --window=-4'
 
-export GOPATH=~/dev/go
-export GOBIN=~/dev/go/bin
+export GOBIN=~/bin
 export PATH="$GOBIN:$PATH"
 
 # Cargo
@@ -156,6 +159,16 @@ export PATH="$CARGO_HOME/bin:$PATH"
 eval "$(direnv hook zsh)"
 
 export EDITOR=vim
+export GOPRIVATE="github.com/4Securitas/polimnia-management"
 
-source ~/.private
-source ~/.gvm/scripts/gvm
+# Docker for M1/M2 Macos
+export DOCKER_DEFAULT_PLATFORM=linux/amd64
+
+# Azure CLI
+autoload bashcompinit && bashcompinit
+source $(brew --prefix)/etc/bash_completion.d/az
+
+
+# Use homebrew's curl
+# export HOMEBREW_FORCE_BREWED_CURL=1
+# export PATH="/opt/homebrew/Cellar/curl/8.6.0/bin:$PATH"
