@@ -137,10 +137,6 @@ alias reloadme='source ~/.zshrc'
 alias q="exit"
 alias r="./scripts/run.sh"
 
-## Dev on remote machine
-alias run_rsync='rsync -avzP --exclude "*/bin" $PWD dev1:/tmp/'
-alias frsync='run_rsync; fswatch -o . | while read f; do run_rsync; done'
-
 ###################################################################################################
 # Environment Variables
 ###################################################################################################
@@ -163,11 +159,6 @@ export GOPRIVATE="github.com/4Securitas/polimnia-management"
 
 # Docker for M1/M2 Macos
 export DOCKER_DEFAULT_PLATFORM=linux/amd64
-
-# Azure CLI
-autoload bashcompinit && bashcompinit
-source $(brew --prefix)/etc/bash_completion.d/az
-
 
 # Use homebrew's curl
 # export HOMEBREW_FORCE_BREWED_CURL=1
